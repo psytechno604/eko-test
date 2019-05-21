@@ -25,44 +25,51 @@ int main(int argc, char* argv[])
 		return Catch::Session().run(1, argv);
 	}
 
-	if (argc == 3) {
-		auto d = new Delivery(std::string(argv[1]));
-		std::cout << d->deliveryCost(std::string(argv[2])) << std::endl;
-		return 0;
-	}
-	if (argc == 7) {
-		auto d = new Delivery(std::string(argv[1]));
-		bool useSameRouteTwice = std::string(argv[4]) == "true";
-		int maxSteps, maxCost;
-		if (std::string(argv[5]) == "INT_MAX")
-			maxSteps = INT_MAX;
-		else
-			maxSteps = std::stoi(std::string(argv[5]));
-		if (std::string(argv[6]) == "INT_MAX")
-			maxCost = INT_MAX;
-		else
-			maxCost = std::stoi(std::string(argv[6]));
+	try {
+		if (argc == 3) {
+			auto d = new Delivery(std::string(argv[1]));
+			int result = d->deliveryCost(std::string(argv[2]));
+			if (result == -1) std::cout << "No Such Route" << std::endl;
+			else std::cout << result << std::endl;
+			return 0;
+		}
+		if (argc == 7) {
+			auto d = new Delivery(std::string(argv[1]));
+			bool useSameRouteTwice = std::string(argv[4]) == "true";
+			int maxSteps, maxCost;
+			if (std::string(argv[5]) == "INT_MAX")
+				maxSteps = INT_MAX;
+			else
+				maxSteps = std::stoi(std::string(argv[5]));
+			if (std::string(argv[6]) == "INT_MAX")
+				maxCost = INT_MAX;
+			else
+				maxCost = std::stoi(std::string(argv[6]));
 
-		std::cout << d->numRoutes(std::string(argv[2]), std::string(argv[3]), useSameRouteTwice, maxSteps, maxCost) << std::endl;
-		return 0;
-	}
-	if (argc == 4) {
-		auto d = new Delivery(std::string(argv[1]));
-		std::cout << d->cheapestRoute(std::string(argv[2]), std::string(argv[3])) << std::endl;
-		return 0;
-	}
-	std::cout << "Usage:" << std::endl << std::endl;
-	std::cout << "Delivery cost for route:" << std::endl << std::endl;
-	std::cout << "<executable> graph route" << std::endl << std::endl;
-	std::cout << "e.g. <executable> AB1,AC4,AD10,BE3,CD4,CF2,DE1,EB3,EA2,FD1 A-B-E" << std::endl << std::endl << std::endl;
-	std::cout << "The number of routes:" << std::endl << std::endl;
-	std::cout << "<executable> graph from to useSameRouteTwice maxSteps maxCost" << std::endl << std::endl;
-	std::cout << "e.g. <executable> AB1,AC4,AD10,BE3,CD4,CF2,DE1,EB3,EA2,FD1 E D false 4 INT_MAX" << std::endl << std::endl << std::endl;
-	std::cout << "The cost of cheapest delivery route:" << std::endl << std::endl;
-	std::cout << "<executable> graph from to" << std::endl << std::endl;
-	std::cout << "e.g. <executable> AB1,AC4,AD10,BE3,CD4,CF2,DE1,EB3,EA2,FD1 E D" << std::endl << std::endl << std::endl;
-	std::cout << "<executable>  --test to run pre-defined tests" << std::endl << std::endl << std::endl;
+			std::cout << d->numRoutes(std::string(argv[2]), std::string(argv[3]), useSameRouteTwice, maxSteps, maxCost) << std::endl;
+			return 0;
+		}
+		if (argc == 4) {
+			auto d = new Delivery(std::string(argv[1]));
+			std::cout << d->cheapestRoute(std::string(argv[2]), std::string(argv[3])) << std::endl;
+			return 0;
+		}
 
+		std::cout << "Usage:" << std::endl << std::endl;
+		std::cout << "Delivery cost for route:" << std::endl << std::endl;
+		std::cout << "<executable> graph route" << std::endl << std::endl;
+		std::cout << "e.g. <executable> AB1,AC4,AD10,BE3,CD4,CF2,DE1,EB3,EA2,FD1 A-B-E" << std::endl << std::endl << std::endl;
+		std::cout << "The number of routes:" << std::endl << std::endl;
+		std::cout << "<executable> graph from to useSameRouteTwice maxSteps maxCost" << std::endl << std::endl;
+		std::cout << "e.g. <executable> AB1,AC4,AD10,BE3,CD4,CF2,DE1,EB3,EA2,FD1 E D false 4 INT_MAX" << std::endl << std::endl << std::endl;
+		std::cout << "The cost of cheapest delivery route:" << std::endl << std::endl;
+		std::cout << "<executable> graph from to" << std::endl << std::endl;
+		std::cout << "e.g. <executable> AB1,AC4,AD10,BE3,CD4,CF2,DE1,EB3,EA2,FD1 E D" << std::endl << std::endl << std::endl;
+		std::cout << "<executable>  --test to run pre-defined tests" << std::endl << std::endl << std::endl;
+	}
+	catch (std::exception ex) {
+		std::cout << ex.what() << std::endl << "Please check input data";
+	}
 
 }
 

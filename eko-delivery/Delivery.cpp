@@ -33,6 +33,17 @@ Delivery::Delivery(std::string data)
 
 Delivery::~Delivery()
 {
+	for (auto u : buffer) {
+		delete u;
+	}
+	for (int i = 0; i < graph->V; i++) {
+		auto next = graph->array[i].head;
+		while (next != nullptr) {
+			auto to_delete = next;
+			next = next->next;
+			delete to_delete;
+		}
+	}
 }
 
 int Delivery::size() {
