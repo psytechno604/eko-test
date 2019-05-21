@@ -68,7 +68,7 @@ int main(int argc, char* argv[])
 		std::cout << "<executable>  --test to run pre-defined tests" << std::endl << std::endl << std::endl;
 	}
 	catch (std::exception ex) {
-		std::cout << ex.what() << std::endl << "Please check input data";
+		std::cout << ex.what() << std::endl << "Please check input data" << std::endl;
 	}
 
 }
