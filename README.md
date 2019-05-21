@@ -1,12 +1,12 @@
 # eko-delivery-test
 
-Program written as Console C++ application in Visual Studio 2019 Preview.
+Program written as Console C++ application.
 
 Catch2 library (https://github.com/catchorg/Catch2) used for unit tests.
 
 ## Building
 ### Windows
-Project created in Visual Studio 2019 Preview.
+Solution and project were created in Visual Studio 2019 Preview (not tested with other versions).
 ### Linux
 Clone the repo, cd into **eko-delivery** folder, then
 ```console
