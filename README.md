@@ -14,7 +14,7 @@ cmake .
 make
 ```
 ## Usage
-### Delivery cost for route type:
+### Delivery cost for route:
 
 ```console
 <executable> [graph] [route]
