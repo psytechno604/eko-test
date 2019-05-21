@@ -4,6 +4,16 @@ Program written as Console C++ application in Visual Studio 2019 Preview.
 
 Catch2 library (https://github.com/catchorg/Catch2) used for unit tests.
 
+## Building
+### Windows
+Project created in Visual Studio 2019 Preview.
+### Linux
+Clone the repo, cd into **eko-delivery** folder, then
+```console
+cmake .
+make
+```
+## Usage
 ### Delivery cost for route type:
 
 ```console
@@ -37,6 +47,3 @@ e.g.
 ```console
 <executable> --test 
 ```
-
-  
- Can be build in Linux also (CMakeLists.txt included).
